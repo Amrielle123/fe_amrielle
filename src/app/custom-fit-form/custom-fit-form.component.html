@@ -1,0 +1,85 @@
+<div class="container mt-3 border-0">
+    <div class="customize-fit-container">
+        <h2>Customize Your Fit</h2>
+        <p>Get the perfect fit with our custom sizing option.</p>
+
+        <form [formGroup]="customizeFitForm" (ngSubmit)="onSubmit()">
+            <!-- Measurement Unit as Radio Buttons -->
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label class="me-3">Measurements</label>
+                    </div>
+
+                    <div class="measurement-toggle">
+                        <button type="button"
+                            [ngClass]="{'active': customizeFitForm.controls['measurementUnit'].value === 'IN'}"
+                            (click)="customizeFitForm.controls['measurementUnit'].setValue('IN')">IN</button>
+
+                        <button type="button"
+                            [ngClass]="{'active': customizeFitForm.controls['measurementUnit'].value === 'CM'}"
+                            (click)="customizeFitForm.controls['measurementUnit'].setValue('CM')">CM</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bust Accordion Section -->
+            <div class="accordion-item">
+                <div class="accordion-header" (click)="toggleSection('bust')">
+                    <h3>Bust</h3>
+                    <span>{{ bustOpen ? '▲' : '▼' }}</span>
+                </div>
+                <div [ngClass]="{'accordion-content': true, 'open': bustOpen}">
+                    <input type="number" formControlName="bust" placeholder="Enter bust size" />
+                    <div *ngIf="customizeFitForm.controls['bust'].invalid && customizeFitForm.controls['bust'].touched"
+                        class="error">
+                        Bust is required and must be a positive number.
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img class="img img-fluid" src="/bust_size.png" alt="bust_size">
+                    </div>
+
+                    <div class="measurement_bg p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p><span class="me-2"><i class="bi bi-rulers"></i></span>How to measure?</p>
+                            <p>Watch clip</p>
+                        </div>
+
+                        <div>
+                            <p>Wrap the measuring tape around the fullest part of your bust, making sure it's level
+                                across your back. The tape should be snug but not tight.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arm Length Accordion Section -->
+            <div class="accordion-item">
+                <div class="accordion-header" (click)="toggleSection('armLength')">
+                    <h3>Arm Length</h3>
+                    <span>{{ armLengthOpen ? '▲' : '▼' }}</span>
+                </div>
+                <div [ngClass]="{'accordion-content': true, 'open': armLengthOpen}">
+                    <input type="number" formControlName="armLength" placeholder="Enter arm length" />
+                    <div *ngIf="customizeFitForm.controls['armLength'].invalid && customizeFitForm.controls['armLength'].touched"
+                        class="error">
+                        Arm length is required and must be a positive number.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Notes -->
+            <div class="form-group">
+                <label>Additional Notes</label>
+                <textarea formControlName="additionalNotes" placeholder="Enter additional notes..."></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <button class="mb-3" type="submit" [disabled]="!customizeFitForm.valid">Save</button>
+        </form>
+    </div>
+
+
+</div>

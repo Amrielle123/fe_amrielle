@@ -1,0 +1,63 @@
+<div>
+    <app-navitems></app-navitems>
+</div>
+
+<div class="show-products px-3 ms-3">
+    <div class="d-flex justify-content-start align-items-start">
+        <button class="btn btn-transparent mb-2 fw-bold" (click)="openFilterModal()">
+            <i class="bi bi-funnel"></i> Filter
+          </button>
+    
+          <div *ngIf="filterData" class="filter-bar">
+        
+            <!-- Price Range Filter Chip -->
+            <span class="filter-chip">
+              ₹{{ 0 }} - ₹{{ filterData['price'] }}
+              <button (click)="clearFilter('price')">✕</button>
+            </span>
+          
+            <!-- Color Filter Chips -->
+            <span *ngFor="let color of filterData.colors" class="filter-chip">
+              {{ color }} <button (click)="clearFilter('color')">✕</button>
+            </span>
+          
+            <!-- Size Filter Chips -->
+            <span *ngFor="let size of filterData.sizes" class="filter-chip">
+              {{ size }} <button (click)="clearFilter('size')">✕</button>
+            </span>
+          
+            <!-- Clear All Filters Button -->
+            <button class="clear-all-button" (click)="clearAllFilters()">
+              Clear All Filters
+            </button>
+          </div>
+    </div>
+   
+      
+
+    <div class="row row-cols-5 align-items-center">
+        <div *ngFor="let product of products" class="mb-3">
+            <div (click)="showProductDetail(product._id)" class="card">
+                <img [src]="product.imageurl" class="mb-2" [alt]="product.productname">
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="card-body p-0">
+                        <p class="card-title mb-0">{{ product.productname }}</p>
+                        <p class="card-text fw-bold">₹ {{ product.price }}</p>
+                    </div>
+
+                    <div (click)="addToCart(product)">
+                        <i class="bi bi-heart"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="text-center">
+        <button class="btn btn-view-all">Load More
+            <span><i class="bi bi-arrow-right"></i></span>
+        </button>
+    </div> -->
+</div>

@@ -1,0 +1,69 @@
+<div class="filter-modal container p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5>FILTER</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+    </div>
+
+    <div class="filter-section">
+        <!-- Category Section -->
+        <!-- <h6>Category</h6>
+        <div>
+            <div class="row align-items-start">
+                <div class="col-6">
+                    <h6>Top Wear</h6>
+                    <div *ngFor="let item of topWear">
+                        <input class="me-1" type="checkbox" id="{{ item }}" />
+                        <label for="{{ item }}">{{ item }}</label>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h6>Bottom Wear</h6>
+                    <div *ngFor="let item of bottomWear">
+                        <input class="me-1" type="checkbox" id="{{ item }}" />
+                        <label for="{{ item }}">{{ item }}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <h6>More Casuals</h6>
+                <div *ngFor="let item of moreCasuals">
+                    <input class="me-1" type="checkbox" id="{{ item }}" />
+                    <label for="{{ item }}">{{ item }}</label>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Price Section -->
+        <h6>Price</h6>
+        <input class="selectPriceRange" type="range" min="250" max="3500" step="50" [(ngModel)]="price" />
+        <p>₹0 - ₹{{ price }}</p>
+
+        <!-- Size Section -->
+        <h6>Size</h6>
+        <div class="row row-cols-5">
+            <div *ngFor="let size of sizes">
+                <button (click)="toggleSize(size)" class="btn btn-outline-secondary mb-2"
+                    [ngClass]="{'selected-size': selectedSizes.includes(size)}">
+                    {{ size }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Color Section -->
+        <h6>Color</h6>
+        <div class="color-grid mb-4">
+            <div *ngFor="let color of colors" class="color-item" (click)="toggleColor(color.name)">
+                <div class="color-box" [style.background]="color.hex"
+                    [ngClass]="{'selected-color': selectedColors.includes(color.name)}"></div>
+                <span>{{ color.name }}</span>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-apply-custom" (click)="applyFilters()">Apply Filters</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,84 @@
+.show-products {
+    h1 {
+        color: var(--Primary-Primary1900, #38291B);
+    }
+
+    .btn-view-all {
+        background: var(--Primary-Primary2000, #2B2015);
+        color: #fff;
+    }
+
+    .card {
+        border: none;
+        background: none;
+        width: 90%;
+    }
+}
+
+/* Custom styles for the sliding effect */
+
+/* Modal dialog positioned on the left side */
+::ng-deep {
+    .slide-in-modal .modal-dialog {
+        position: fixed;
+        top: -5% !important;
+        left: 1px !important;
+        height: 100vh;
+        width: 400px;
+        max-width: 100%;
+        border-radius: 8px;
+        overflow-y: auto;
+        background-color: #fff; 
+    }
+    
+    
+    .slide-in-modal.show .modal-dialog {
+        transform: translateX(0);
+    }
+    
+    .custom-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .filter-chip button {
+    background: none;
+    border: none;
+    color: #888;
+    font-weight: bold;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  .clear-all-button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .clear-all-button:hover {
+    background-color: #444;
+  }
+  

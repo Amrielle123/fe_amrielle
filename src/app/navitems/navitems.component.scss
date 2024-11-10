@@ -1,0 +1,13 @@
+.border-bottom-custome{
+    border-bottom: 1px solid var(--Primary-Primary300, #E9DDD1)
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.cursor-block{
+    color: gray;           
+    text-decoration: none;   
+    cursor: not-allowed; 
+}
