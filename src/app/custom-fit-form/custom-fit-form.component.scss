@@ -1,0 +1,118 @@
+::ng-deep {
+    .modal-content{
+        border: none;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+/* customize-fit.component.scss */
+.customize-fit-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .measurement-toggle {
+    display: inline-flex;
+    border: 1px solid #d4a373;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .measurement-toggle button {
+    padding: 5px 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #d4a373;
+  }
+  
+  .measurement-radio label {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .measurement-radio input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  .measurement-toggle button.active {
+    background-color: #d4a373;
+    color: #fff;
+  }
+  
+  .measurement-toggle button:not(.active):hover {
+    background-color: #f1ece3;
+  }
+  
+  .measurement-toggle button:first-child {
+    border-right: 1px solid #d4a373;
+  }
+
+  .measurement_bg{
+    border: 1px solid var(--Neutrals-Neutrals200, #D3C7C7);
+    background: var(--Base-Base-White, #FAFAFA);
+  }
+  
+  .accordion-item {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 0;
+    font-weight: bold;
+  }
+  
+  .accordion-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    padding: 0;
+  }
+  
+  .accordion-content.open {
+    max-height: 100%; /* Set a maximum height for animation; adjust as needed */
+    padding: 10px 0;
+  }
+  
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #d4a373;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+  }
+  

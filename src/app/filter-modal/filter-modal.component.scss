@@ -1,0 +1,61 @@
+/* Content styling for the filter modal */
+.filter-modal-content {
+  padding: 20px;
+}
+
+/* Style for the color filter section */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns */
+  gap: 10px;
+}
+
+.color-item {
+  display: flex;
+  align-items: center;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+  /* Optional: add border for better visibility */
+}
+
+.color-item span {
+  font-size: 14px;
+  color: #333;
+}
+
+::ng-deep {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .modal-content{
+    border: none;
+  }
+}
+
+.selectPriceRange {
+  width: 100%;
+}
+
+/* Highlight for selected size button */
+.selected-size {
+  background-color: #A0764E;
+  color: white;
+}
+
+/* Highlight for selected color box */
+.selected-color {
+  border: 2px solid #A0764E;
+}
+
+.btn-apply-custom{
+  background:#A0764E;
+  color: #FFF;
+}

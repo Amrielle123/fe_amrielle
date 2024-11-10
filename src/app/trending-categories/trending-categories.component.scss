@@ -1,0 +1,16 @@
+.trending{
+    h1{
+        color: var(--Primary-Primary1900, #38291B);
+    }
+
+    .btn-view-all {
+        background: var(--Primary-Primary2000, #2B2015);
+        color: #fff;
+    }
+
+    .card {
+        border: none;
+        background: none;
+        width: 90%;
+    }
+}

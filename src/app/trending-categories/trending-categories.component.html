@@ -1,0 +1,21 @@
+<div class="trending">
+    <div class="d-flex justify-content-between align-items-center h-100 mb-3">
+      <!-- Loop through the products array and display each product -->
+      <div *ngFor="let product of products">
+        <div class="card">
+          <img [src]="product.imageurl" class="mb-2" [alt]="product.productname">
+          <div class="card-body p-0">
+            <p class="card-title mb-0">{{ product.productname }}</p>
+            <p class="card-text fw-bold">₹ {{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center">
+      <button (click)="openProducts('trending')" class="btn btn-view-all">
+        View All <span><i class="bi bi-arrow-right"></i></span>
+      </button>
+    </div>
+  </div>
+  
