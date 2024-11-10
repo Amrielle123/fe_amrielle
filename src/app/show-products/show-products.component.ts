@@ -6,6 +6,7 @@ import { CartServicesService } from '../../services/cart-services.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { HttpClient } from '@angular/common/http';
+import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
 
 export interface Product {
   _id: string;
@@ -28,7 +29,7 @@ export interface Product {
 @Component({
   selector: 'app-show-products',
   standalone: true,
-  imports: [NavitemsComponent, CommonModule, RouterModule],
+  imports: [NavitemsComponent, CommonModule, RouterModule, FooterElementsComponent],
   templateUrl: './show-products.component.html',
   styleUrl: './show-products.component.scss'
 })

@@ -7,11 +7,12 @@ import { NavitemsComponent } from '../navitems/navitems.component';
 import { CartServicesService } from '../../services/cart-services.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFitFormComponent } from '../custom-fit-form/custom-fit-form.component';
+import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
 
 @Component({
   selector: 'app-single-product-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NavitemsComponent],
+  imports: [CommonModule, HttpClientModule, NavitemsComponent, FooterElementsComponent],
   templateUrl: './single-product-details.component.html',
   styleUrl: './single-product-details.component.scss'
 })

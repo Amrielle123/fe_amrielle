@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartServicesService } from '../../services/cart-services.service';
 import { CommonModule } from '@angular/common';
 import { NavitemsComponent } from '../navitems/navitems.component';
+import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
 
 @Component({
   selector: 'app-show-cart-details',
   standalone: true,
-  imports: [CommonModule, NavitemsComponent],
+  imports: [CommonModule, NavitemsComponent, FooterElementsComponent],
   templateUrl: './show-cart-details.component.html',
   styleUrl: './show-cart-details.component.scss'
 })
@@ -28,8 +29,6 @@ export class ShowCartDetailsComponent implements OnInit {
       ...item,
       quantity: item.quantity || 1 // Ensure quantity is at least 1
     }));
-
-    console.log(this.cartItems)
     this.calculateTotalCost();
   }
 

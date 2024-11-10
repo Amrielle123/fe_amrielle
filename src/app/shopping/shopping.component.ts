@@ -7,11 +7,12 @@ import { Bannerdata } from '../interface/bannerdata';
 import { PopularCategoriesComponent } from '../popular-categories/popular-categories.component';
 import { CustomFitComponent } from '../custom-fit/custom-fit.component';
 import { TrendingCategoriesComponent } from '../trending-categories/trending-categories.component';
+import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
 
 @Component({
   selector: 'app-shopping',
   standalone: true,
-  imports: [NavitemsComponent, BannerDesignComponent, NewArrivalsComponent, PopularCategoriesComponent, CustomFitComponent, TrendingCategoriesComponent],
+  imports: [NavitemsComponent, BannerDesignComponent, NewArrivalsComponent, PopularCategoriesComponent, CustomFitComponent, TrendingCategoriesComponent, FooterElementsComponent],
   templateUrl: './shopping.component.html',
   styleUrl: './shopping.component.scss'
 })

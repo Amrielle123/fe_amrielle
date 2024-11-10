@@ -1,0 +1,23 @@
+.btn-brown{
+    background: var(--Primary-Primary, #A0764E);
+    color: #FFF;
+}
+
+.text-color-custom{
+    ul{
+        li{
+            a{
+                color: #737373 !important;
+            }
+        } 
+    }
+
+    p {
+        color: #737373 !important;
+    }
+
+    .text-dark-custom{
+        color: black !important;
+    }
+    
+}

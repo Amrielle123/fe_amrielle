@@ -2,7 +2,7 @@
     <app-navitems></app-navitems>
 </div>
 
-<div class="mx-5">
+<div class="mx-5 margin-bottom">
     <div *ngIf="product">
         <div class="row align-items-start">
             <div class="col-5">
@@ -36,7 +36,8 @@
                                 <div>
                                     <p>Choose Size <a href="#" class="size-chart-link">size chart</a></p>
                                     <div class="size-options me-2">
-                                        <button [disabled]="newCustomFit && isCustomFit" (click)="selectSize(size)" *ngFor="let size of product.sizes"
+                                        <button [disabled]="newCustomFit && isCustomFit" (click)="selectSize(size)"
+                                            *ngFor="let size of product.sizes"
                                             [ngClass]="{'selected-size': selectedSize === size}" class="size-button">{{
                                             size }}</button>
                                     </div>
@@ -63,18 +64,20 @@
                                     <h6><i class="icon-measurements"></i> Your Measurements</h6>
 
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <p class="measurement-item p-2 me-2 text-nowrap">Bust: <span class="text-dark"> {{ bust }} {{ measurementUnit }}</span>
+                                        <p class="measurement-item p-2 me-2 text-nowrap">Bust: <span class="text-dark">
+                                                {{ bust }} {{ measurementUnit }}</span>
                                         </p>
-                                        <p class="measurement-item p-2 text-nowrap">Arm-Length: <span class="text-dark"> {{ armLength }}
-                                            {{measurementUnit }} </span></p>
+                                        <p class="measurement-item p-2 text-nowrap">Arm-Length: <span class="text-dark">
+                                                {{ armLength }}
+                                                {{measurementUnit }} </span></p>
                                     </div>
 
                                     <!-- Edit Button -->
-                                     <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between">
                                         <button class="edit-button me-2" (click)="openCustomFitModal()">EDIT</button>
                                         <button class="edit-button" (click)="clearCustomFitData()">Clear</button>
-                                     </div>
-                                   
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -83,7 +86,8 @@
 
                         <!-- Add to Cart and Wishlist Buttons -->
                         <div class="product-buttons">
-                            <button class="add-to-cart p-2 w-75" [disabled]="!selectedSize && !isCustomFit" (click)="addToCart()">Add to
+                            <button class="add-to-cart p-2 w-75" [disabled]="!selectedSize && !isCustomFit"
+                                (click)="addToCart()">Add to
                                 Cart</button>
                             <button class="add-to-wishlist p-2">Add to Wishlist</button>
                         </div>
@@ -117,4 +121,10 @@
     <div *ngIf="!product">
         <p>Loading product details...</p>
     </div>
+</div>
+
+<hr>
+
+<div>
+    <app-footer-elements></app-footer-elements>
 </div>
