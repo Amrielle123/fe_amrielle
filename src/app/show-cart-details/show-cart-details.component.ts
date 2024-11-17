@@ -60,7 +60,7 @@ export class ShowCartDetailsComponent implements OnInit {
 
 
   createOrder(amount: number) {
-    this.http.post('http://localhost:3000/create-order', { amount }).subscribe((order: any) => {
+    this.http.post('http://localhost:3000/api/create-order', { amount }).subscribe((order: any) => {
       const options = {
         key: 'YOUR_KEY_ID',
         amount: order.amount,
