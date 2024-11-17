@@ -61,7 +61,7 @@ export class ShowProductsComponent implements OnInit {
 
   // Fetch products from the server and filter by category
   fetchProducts() {
-    this.http.get<Product[]>('http://52.66.53.37/api/get-products').subscribe(
+    this.http.get<Product[]>('http://amrielle.in/api/get-products').subscribe(
       (allProducts) => {
         // Store all products initially to allow resetting filters
         this.allProducts = allProducts;
