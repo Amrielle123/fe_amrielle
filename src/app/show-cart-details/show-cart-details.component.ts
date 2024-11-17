@@ -55,4 +55,8 @@ export class ShowCartDetailsComponent implements OnInit {
   calculateTotalCost(): void {
     this.totalCost = this.cartItems.reduce((total, item: any) => total + item.price * item.quantity, 0).toFixed(2);
   }
+
+  createOrder(){
+    
+  }
 }
