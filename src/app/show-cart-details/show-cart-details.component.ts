@@ -3,6 +3,7 @@ import { CartServicesService } from '../../services/cart-services.service';
 import { CommonModule } from '@angular/common';
 import { NavitemsComponent } from '../navitems/navitems.component';
 import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-show-cart-details',
@@ -16,7 +17,8 @@ export class ShowCartDetailsComponent implements OnInit {
   totalCost: number = 0;
 
   constructor(
-    private cartService: CartServicesService
+    private cartService: CartServicesService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +58,42 @@ export class ShowCartDetailsComponent implements OnInit {
     this.totalCost = this.cartItems.reduce((total, item: any) => total + item.price * item.quantity, 0).toFixed(2);
   }
 
-  createOrder(){
-    
+
+  createOrder(amount: number) {
+    this.http.post('http://localhost:3000/create-order', { amount }).subscribe((order: any) => {
+      const options = {
+        key: 'YOUR_KEY_ID',
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Amrielle',
+        description: 'Purchase Description',
+        order_id: order.id,
+        handler: (response: any) => {
+          // Handle payment success
+          this.verifyPayment(response);
+        },
+        prefill: {
+          name: 'Customer Name',
+          email: 'customer@example.com',
+          contact: '9999999999',
+        },
+        theme: {
+          color: '#3399cc',
+        },
+      };
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    });
+  }
+
+  verifyPayment(payment: any) {
+    this.http.post('/verify-payment', payment).subscribe((response: any) => {
+      console.info(response)
+      if (response.success) {
+        
+      } else {
+        // Payment verification failed
+      }
+    });
   }
 }
