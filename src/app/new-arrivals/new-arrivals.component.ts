@@ -45,9 +45,10 @@ export class NewArrivalsComponent implements OnInit {
 
   fetchProducts() {
     // Make the GET request to fetch products
-    this.http.get<Product[]>('http://amrielle.in/api/get-products/new-arrivals').subscribe(
+    this.http.get<Product[]>('https://amrielle.in/api/get-products/new-arrivals').subscribe(
       (response) => {
         this.products = response.filter(product => product.gender === this.gender);
+        console.info(this.products)
       },
       (error) => {
         console.error('Error fetching products:', error);
