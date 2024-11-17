@@ -8,7 +8,7 @@ import { Product } from '../app/show-products/show-products.component';
 })
 export class ProductRelatedServiceService {
 
-  private apiUrl = 'http://localhost:3000/api/get-product-details'; // Backend API URL
+  private apiUrl = 'http://52.66.53.37/api/get-product-details'; // Backend API URL
 
   constructor(private http: HttpClient) {}
 

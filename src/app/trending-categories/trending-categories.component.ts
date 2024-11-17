@@ -46,7 +46,7 @@ export class TrendingCategoriesComponent implements OnInit {
 
   fetchProducts() {
     // Make the GET request to fetch products
-    this.http.get<Product[]>('http://localhost:3000/api/get-products/new-arrivals').subscribe(
+    this.http.get<Product[]>('http://52.66.53.37/api/get-products/new-arrivals').subscribe(
       (response) => {
         this.products = response.filter(product => product.gender === this.gender);
       },
