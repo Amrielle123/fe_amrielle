@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NavitemsComponent } from '../navitems/navitems.component';
 import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
 import { HttpClient } from '@angular/common/http';
+import { ProductRelatedServiceService } from '../../services/product-related-service.service';
 
 @Component({
   selector: 'app-show-cart-details',
@@ -18,7 +19,8 @@ export class ShowCartDetailsComponent implements OnInit {
 
   constructor(
     private cartService: CartServicesService,
-    private http: HttpClient
+    private http: HttpClient,
+    private productRelatedServiceService: ProductRelatedServiceService
   ) { }
 
   ngOnInit(): void {
@@ -59,41 +61,53 @@ export class ShowCartDetailsComponent implements OnInit {
   }
 
 
-  createOrder(amount: number) {
-    this.http.post('https://amrielle.in/api/create-order', { amount }).subscribe((order: any) => {
-      const options = {
-        key: 'YOUR_KEY_ID',
-        amount: order.amount,
-        currency: order.currency,
-        name: 'Amrielle',
-        description: 'Purchase Description',
-        order_id: order.id,
-        handler: (response: any) => {
-          // Handle payment success
-          this.verifyPayment(response);
-        },
-        prefill: {
-          name: 'Customer Name',
-          email: 'customer@example.com',
-          contact: '9999999999',
-        },
-        theme: {
-          color: '#3399cc',
-        },
-      };
-      const rzp = new (window as any).Razorpay(options);
-      rzp.open();
-    });
+  createOrder(amount: number): void {
+    this.productRelatedServiceService.createOrder(amount).subscribe(
+      (order: any) => {
+        console.info(order);
+        const options = {
+          key: 'YOUR_KEY_ID', // Replace with Razorpay test/live key
+          amount: order.amount,
+          currency: order.currency,
+          name: 'Amrielle',
+          description: 'Purchase Description',
+          order_id: order.id,
+          handler: (response: any) => {
+            // Handle payment success
+            this.verifyPayment(response);
+          },
+          prefill: {
+            name: 'Customer Name',
+            email: 'customer@example.com',
+            contact: '9999999999',
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+        const rzp = new (window as any).Razorpay(options);
+        rzp.open();
+      },
+      (error) => {
+        console.error('Error creating order:', error);
+      }
+    );
   }
 
-  verifyPayment(payment: any) {
-    this.http.post('/verify-payment', payment).subscribe((response: any) => {
-      console.info(response)
-      if (response.success) {
-        
-      } else {
-        // Payment verification failed
+  verifyPayment(payment: any): void {
+    this.productRelatedServiceService.verifyPayment(payment).subscribe(
+      (response: any) => {
+        console.info(response);
+        if (response.success) {
+          // Handle successful payment verification
+          console.log('Payment verified successfully');
+        } else {
+          console.error('Payment verification failed');
+        }
+      },
+      (error) => {
+        console.error('Error verifying payment:', error);
       }
-    });
+    );
   }
 }

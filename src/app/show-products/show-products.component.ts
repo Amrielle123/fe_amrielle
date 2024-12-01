@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
 import { HttpClient } from '@angular/common/http';
 import { FooterElementsComponent } from '../footer-elements/footer-elements.component';
+import { ProductRelatedServiceService } from '../../services/product-related-service.service';
 
 export interface Product {
   _id: string;
@@ -41,6 +42,7 @@ export class ShowProductsComponent implements OnInit {
     private cartService: CartServicesService,
     private modalService: NgbModal,
     private http: HttpClient,
+    private productRelatedServiceService: ProductRelatedServiceService,
     private route: Router
   ) { }
 
@@ -61,14 +63,14 @@ export class ShowProductsComponent implements OnInit {
 
   // Fetch products from the server and filter by category
   fetchProducts() {
-    this.http.get<Product[]>('https://amrielle.in/api/get-products').subscribe(
+    this.productRelatedServiceService.fetchAllProducts().subscribe(
       (allProducts) => {
-        // Store all products initially to allow resetting filters
+        // Store all products for resetting filters
         this.allProducts = allProducts;
 
         // Filter products by category and update displayed products
-        this.products = allProducts.filter(
-          (product) => product.category.includes(this.productCategory)
+        this.products = allProducts.filter((product) =>
+          product.category.includes(this.productCategory)
         );
       },
       (error) => {

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductRelatedServiceService } from '../../services/product-related-service.service';
 
 interface Product {
   _id: string;
@@ -32,7 +33,8 @@ export class NewArrivalsComponent implements OnInit {
   constructor(
     private route: Router,
     private http: HttpClient,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private productRelatedServiceService: ProductRelatedServiceService
   ) { }
 
   ngOnInit(): void {
@@ -45,12 +47,12 @@ export class NewArrivalsComponent implements OnInit {
 
   fetchProducts() {
     // Make the GET request to fetch products
-    this.http.get<Product[]>('https://amrielle.in/api/get-products/new-arrivals').subscribe(
-      (response) => {
-        this.products = response.filter(product => product.gender === this.gender);
+    this.productRelatedServiceService.fetchProducts().subscribe(
+      (response:any) => {
+        this.products = response.filter((product:any) => product.gender === this.gender);
       },
-      (error) => {
-        console.error('Error fetching products:', error);
+      (error:any) => {
+        console.error('Error fetching new arrivals:', error);
       }
     );
   }
